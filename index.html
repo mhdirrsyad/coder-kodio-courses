@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<!-- kita diawal tu merancang html nya dulu sampai footer -->
+<body>
+    <!-- disini header dan section atau footer kita pakai id saja gk usah class, karena 1 doang variabelnya sama kek "landing" gitu -->
+    <header id="header">
+        <h1>Coder</h1>
+        <nav>
+            <!-- # ini berguna utk href / arahkan destinasi navbar ke id" yg sudah ada -->
+            <a href="#about">About</a>
+            <a href="#service">Service</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <section id="landing">
+        <!-- karena dalam 1 section ini ada 2 bagian kanan dan kiri
+         jadi kita bungkusnya tu dgn 2 div -->
+         <div>
+            <h1>Lorem ipsum dolor sit amet consectetur.</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, accusantium placeat.</p>
+            <!-- disini kita bungkus dgn div karena utk button -->
+            <div>
+                <!-- disini btn ditimpa sama btn-alt, kenapa si gk dibuat btn-alt aja gitu
+                 tujuannya, biar kedua btn ini mempunyai padding yg sama -->
+                <a class="btn btn-alt" href="#about">More Info</a>
+                <a class="btn" href="#contact">Contact Us</a>
+            </div>
+        </div>
+         <div>
+            <img src="images/landing.png" alt="landing-image">
+         </div>
+    </section>
+    <!-- section kedua -->
+    <section id="about">
+        <div>
+            <img src="images/about.png" alt="about-image">
+        </div>
+        <!-- utk bagian kanan kita tambahkan div lagi-->
+        <div>
+            <h1>We are the best in our field</h1>
+            <p>For the last 5 years we always give the best to our client
+                and we will always be the best</p>
+            <!-- ini id karena satu aja -->
+            <div id="about-stats">
+                <!-- nah ini utk statistik kita bagi div 1 2 dan 3 -->
+                 <div class="about-stats-item">
+                    <h1>100+</h1>
+                    <!-- disini div perlu utk bikin kotak kecilnya itu tadi -->
+                    <div></div>
+                    <p>Experts</p>
+                 </div>
+                 <div class="about-stats-item">
+                    <h1>300+</h1>
+                    <div></div>
+                    <p>Clients</p>
+                 </div>
+                 <div class="about-stats-item">
+                    <h1>500+</h1>
+                    <div></div>
+                    <p>Projects</p>
+                 </div>
+            </div>
+        </div>
+    </section>
+    <!-- section ketiga -->
+    <section id="service">
+        <div class="service-header">
+            <!-- nah karena ini ada button, kita perlu bungkus ni h1 dan p dengan div -->
+            <div>
+                <h1>Our Services</h1>
+                <p>We have the best service to solve your problem</p>
+            </div>
+            <a href="#contact" class="btn">Contact Us</a>
+        </div>
+        <!-- div untuk 3 buah card -->
+        <div class="service-detail">
+            <!-- kita kasih ketiga ini nama class yg sama -->
+            <div class="service-detail-item">
+                <img src="images/service1.png" alt="service 1 img">
+                <h2>Web Application</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, perferendis repudiandae soluta accusamus alias modi.</p>
+            </div>
+            <div class="service-detail-item">
+                <img src="images/service2.png" alt="service 2 img">
+                <h2>UI/UX Design</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, perferendis repudiandae soluta accusamus alias modi.</p>
+            </div>
+            <div class="service-detail-item">
+                <img src="images/service3.png" alt="service 3 img">
+                <h2>Mobile Application</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, perferendis repudiandae soluta accusamus alias modi.</p>
+            </div>
+        </div>
+    </section>
+    <!-- section ketiga -->
+     <section id="contact">
+        <h1>Contact Us</h1>
+        <p>Get in touch with us now and get your problem solved</p>
+        <!-- class contact-detail -->
+        <div class="contact-detail">
+            <!-- ini form -->
+            <form action="">
+                <h1>Tell us your problem</h1>
+                <div class="form-group">
+                    <!-- masing" div utk input" -->
+                     <!-- karena pakai grid area jadi pakai id di masing" input -->
+                    <div id="input-name" class="input-group">
+                        <label for="">Name</label>
+                        <input type="text" placeholder="Your Name">
+                    </div>
+                    <div id="input-subject" class="input-group">
+                        <label for="">Subject</label>
+                        <input type="text" placeholder="Your Subject">
+                    </div>
+                    <div id="input-email" class="input-group">
+                        <label for="">Email</label>
+                        <input type="email" placeholder="Your Email">
+                    </div>
+                    <div id="input-phone" class="input-group">
+                    <label for="">Phone Number</label>
+                    <input type="tel" placeholder="Your Phone Number">
+                    </div>
+                    <div id="input-message" class="input-group">
+                        <label for="">Message</label>
+                        <input type="text" placeholder="Write Your Message">
+                    </div>
+                </div>
+                <!-- bikin class untuk btn -->
+                <button class="btn">Submit</button>
+            </form>
+            <!-- div yg kanan -->
+            <div>
+                <h1>Our Location</h1>
+                <iframe src="images/maps.jpg" frameborder="0"></iframe>
+            </div>
+        </div>
+     </section>
+     <!-- footer -->
+     <footer id="footer">
+        <!-- dibagi menjadi kiri dan kanan -->
+        <!-- utk yg kiri -->
+        <div>
+            <h1>Coder</h1>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis, nesciunt!</p>
+        </div>
+        <!-- utk yg kanan -->
+        <div class="social-icon">
+            <img src="images/Facebook.svg" alt="">
+            <img src="images/Instagram.svg" alt="">
+            <img src="images/Twitter.svg" alt="">
+        </div>
+     </footer>
+</body>
+</html>

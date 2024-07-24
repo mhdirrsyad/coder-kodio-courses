@@ -1,0 +1,536 @@
+/* biar gk pusing nemuin nama class"nya hingga scroll ke bawah,
+klik aja ctrl + find dan ketik nama class yg mau dicari */
+/* semua ber font montserrat */
+* {
+    font-family: "Montserrat";
+    /* tambahi box sizing disini - finishing project */
+    /* ini untuk padding dan margin itu dihitung ke dalam lebar dan tingginya sebuah elemen,
+    biar nanti tidak ada hal yang berlebih*/
+    box-sizing: border-box;
+    /* untuk membuat scroll lebih smooth - finishing project */
+    scroll-behavior: smooth;
+}
+
+/* karena html itu ada bawaan padding nya sedikit di body, jadi untuk menghapus itu */
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 48px;
+    margin: 0 0 16px 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+}
+
+p {
+    color: #979797;
+    margin: 0 0 16px 0;
+    font-size: 24px;
+}
+
+/* child, a adalah anak dari si nav, maksudnya dia nanti akan mencari anaknya yaitu a */
+nav>a {
+    margin-left: 12px;
+}
+
+/* atur link hover */
+nav>a:hover {
+    color: #ffc108;
+}
+
+/* tambahin sini section karena semua sectionnya pakai padding ke atas dan kebawah terus bikin satu aja disini utk padding dari semua section */
+section {
+    padding: 64px 128px;
+}
+
+/* image dan si iframe itu lebarnya mengikuti lebar si containernya - finishing projek */
+/* hal ini dilakukan biar gambar dan iframe nya gk jebol lagi */
+img,
+iframe {
+    width: 100%;
+}
+
+.btn {
+    background-color: #ffc108;
+    color: white;
+    padding: 8px 24px;
+}
+
+.btn-alt {
+    background-color: white;
+    color: black;
+    margin-right: 16px;
+    border: 2px solid #ffc108;
+}
+
+/* atur heading */
+#header {
+    /* utk buat ke kiri dan ke kanan pakai display flex */
+    display: flex;
+    align-items: center;
+    background-color: white;
+    /* justify content utk memberikan jarak antara satu komponen ke komponen lainnya agar ada space ditengahnya */
+    justify-content: space-between;
+    /* pakai padding krn memang yg kita perlukan jarak dari luar ke dalamnya */
+    padding: 16px 128px;
+    /* masuk ke materi position, kita coba tambahkan position */
+    /* sticky untuk membuat header stuck di atas dan top 0 untuk membuat sticky berfungsi */
+    position: sticky;
+    top: 0;
+    /* karena ada bagian yg bentrok td dengan elemen di belakang, 
+    kita buat header ini di depan semuanya */
+    z-index: 5;
+}
+
+/* karena h1 ada margin di bawah jadi kita atur lg utk h1 header disini */
+#header h1 {
+    /* nah kita hapus margin utk h1 header */
+    margin: 0;
+    /* cara menambahkan animasi kesini */
+    /* disini tambahin nama animasi yg udh kita buat, terus berapa lama, brp kali diulang
+    animasinya */
+    /* animation: flash 1s infinite; */
+    animation: bounceIn 1s;
+}
+
+/* mencoba membuat animasi yg lebih kompleks, yaitu mantul"/bounce */
+@keyframes bounceIn {
+
+    /* buat prosesnya, jadi ketika 0% apa yg terjadi */
+    0% {
+        filter: opacity(0);
+        /* nanti mulainya tu posisinya di atas dulu gitu */
+        transform: translateY(-20px);
+    }
+
+    /* setelah 0% kita buat ke 35%, kita buat progres 2/4 dari animasinya */
+    35% {
+        filter: opacity(0.25);
+        /* ini kita balikkan ke posisi awal translateY yg tadi -20 kita bikin 0 */
+        transform: translateY(0);
+    }
+
+    /* setelah 35% dilanjutkan ke progres 70% dari animasinya */
+    70% {
+        filter: opacity(0.5);
+        /* nah ini kita naikkan lagi posisinya sedikit setelah jatuh tadi,
+        untuk ciptakan efek mantul" gitu */
+        transform: translateY(-10px);
+    }
+
+    /* progres akhir animasi */
+    100% {
+        filter: opacity(1);
+        /* nah ini kita balikkan lagi ke posisi awalnya */
+        transform: translateY(0);
+    }
+}
+
+/* membuat animasi di header */
+/* utk membuat animasi, pertama membuat dulu keyframenya */
+/* keyframe adalah proses nya dalam animasi dari awal hingga akhir */
+/* flash adalah nama dari animasi saja */
+@keyframes flash {
+
+    /* misalnya kita buat dari mana animasinya */
+    from {
+        /* misalnya kita buat opacity yg awalnya itu 0 */
+        filter: opacity(0);
+    }
+
+    /* ke */
+    to {
+        /* menjadi opacity nya satu/ nanti dia bakal dari gelap menjadi ada gitu */
+        filter: opacity(1);
+    }
+}
+
+#landing {
+    /* kasih juga display flex untuk landingnya */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 16px;
+}
+
+/* descendant */
+#landing p {
+    margin-bottom: 32px;
+}
+
+/* ini juga sama tambahin biar lebih rapi kek di about, jadi kanan dan kiri sama widthnya */
+#landing>div {
+    width: 50%;
+}
+
+#about {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 16px;
+}
+
+/* biar sama rata yg kiri dan kanan maka kita pilih yaitu anaknya aja dari div dari about */
+#about>div {
+    width: 50%;
+}
+
+#about-stats {
+    /* nah disini kita pakai grid */
+    display: grid;
+    /* kita mau bikin 3 kolom tu gunain ini, kita bakal baginya masing" menjadi 1fr 1fr 1fr */
+    /* tapi biar lebih rapi biar gk nulis 1fr berulang", kita bisa bikin jadi repeat(3, 1fr), maksudnya 1fr nya itu 3 */
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    /* nah tambahin margin biar ada jarak dari luar */
+    margin-top: 72px;
+}
+
+.about-stats-item {
+    display: flex;
+    /* kita buat jadi column, biar dia ke bawah, gk row/ke samping */
+    flex-direction: column;
+    align-items: center;
+}
+
+/* bikin kotak kuning : */
+.about-stats-item div {
+    width: 50px;
+    height: 10px;
+    background-color: #ffc108;
+    margin-bottom: 16px;
+}
+
+/* service */
+.service-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* cara menambahkan kotak kuning dibelakang teks h1 di section service */
+/* tambahin disini, karena position itu akan relative terhadap parentnya */
+.service-header h1 {
+    position: relative;
+}
+
+.service-header h1::before {
+    content: "";
+    /* nah kalau gk tambahin content : "", dia nanti gk muncul gambarnya */
+    width: 60px;
+    height: 60px;
+    background: url("images/accent1.svg");
+    /* ingat, ketika menggunakan posisi absolute, kita bisa atur posisinya */
+    position: absolute;
+    /* memposisikan gambar */
+    left: -20px;
+    top: -10px;
+    /* mengatur untuk posisi depan atau belakang gambar */
+    z-index: -1;
+}
+
+.service-detail {
+    /* disini display grid, sebenarnya display flex bisa juga tapi kita gunain aja si display grid */
+    display: grid;
+    /* kita bagi dia menjadi 3 kolom */
+    grid-template-columns: repeat(3, 1fr);
+    /* kita pakai gap utk bagi jaraknya dari masing" kolom */
+    column-gap: 128px;
+    margin-top: 72px;
+}
+
+/* disini kita kasih style untuk 3 card itu */
+.service-detail-item {
+    /* 2px untuk mengatur x-axis nya, 4px pertama untuk mengatur y-axis nya, dan 4 px terakhir utk mengatur keburaman shadownya */
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* belajar transform, ketika cursor di gambar, card service-detail-item jadi lebih besar */
+/* service-detail-item ketika kondisi di hover, kita pengen ubah ukurannya */
+.service-detail-item:hover {
+    /* begini cara transform, utk perbesar card nya ketika di hover */
+    /* transform ini ada byk selain scale, seperti rotate dll. */
+    transform: scale(1.15);
+}
+
+/* ketika hover di cardnya, maka gambarnya menjadi berwarna lagi */
+.service-detail-item:hover img {
+    filter: grayscale(0);
+}
+
+/* kita atur dulu utk img nya */
+.service-detail-item img {
+    width: 100%;
+    /* memfilter gambar di css, ada byk bet filter */
+    filter: grayscale(1);
+    /* filter: contrast(50); */
+    /* filter: brightness(20); */
+    /* filter: opacity(0.5); */
+}
+
+.service-detail-item h2 {
+    padding: 0 16px;
+}
+
+/* atur font size nya */
+.service-detail-item p {
+    font-size: 16px;
+    padding: 0 16px;
+}
+
+/* contact */
+.contact-detail {
+    display: flex;
+    justify-content: space-between;
+    /* untuk bikin jarak dari header contact */
+    margin-top: 72px;
+    /* jarak antara form dan locations */
+    column-gap: 128px;
+}
+
+/* karena yg satu div dan yg satu form */
+/* artinya, contact detail ambil anaknya yaitu div dan form */
+.contact-detail>div,
+.contact-detail>form {
+    width: 50%;
+}
+
+/* parent untuk position absolute */
+/* ingat tanda >, untuk mengambil anak h1 dari #contact, jadi h1 cucu"nya gk terikut */
+#contact>h1 {
+    position: relative;
+}
+
+#contact>h1::before {
+    content: "";
+    width: 60px;
+    height: 60px;
+    background: url("images/accent2.svg");
+    position: absolute;
+    left: -20px;
+    top: -10px;
+    z-index: -1;
+}
+
+/* atur form */
+form {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid #ffc108;
+    padding: 64px 32px;
+}
+
+form h1 {
+    font-size: 32px;
+    text-align: center;
+}
+
+form button {
+    /* dibikin gini biar gk ikut class btn sebelumnya yg ada border */
+    border: none;
+}
+
+/* atur button hover */
+/* pseudo class */
+/* nama state nya hover */
+form button:hover {
+    /* jadi ini nanti ketika cursor ke button, cursor nya berubah jadi pointer */
+    cursor: pointer;
+    background-color: #979797;
+}
+
+/* input form semua */
+.form-group {
+    /* display grid */
+    display: grid;
+    /* ini kita buat 2 kolom */
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 32px;
+    /* memberi jarak dengan si headingnya/h1 td */
+    margin-top: 32px;
+    /* pakai grid area utk nempatin div input"nya */
+    grid-template-areas: "name subject"
+        "email phone"
+        "message message";
+}
+
+/* menamakan untuk grid template area di form group */
+#input-name {
+    grid-area: name;
+}
+
+#input-subject {
+    grid-area: subject;
+}
+
+#input-email {
+    grid-area: email;
+}
+
+#input-phone {
+    grid-area: phone;
+}
+
+#input-message {
+    grid-area: message;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    /* kita kasih jarak antar input */
+    margin-bottom: 32px;
+}
+
+/* atur label input */
+.input-group label {
+    /* tebal huruf */
+    font-weight: 700;
+    margin-bottom: 16px;
+    font-size: 24px;
+}
+
+/* atur untuk input formnya */
+.input-group input {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    font-size: 20px;
+}
+
+/* atur focus input */
+/* disini kondisinya itu focus */
+.input-group input:focus {
+    border-bottom: 2px solid #ffc108;
+}
+
+footer {
+    padding: 16px 128px;
+    background-color: #ffc108;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer p {
+    color: white;
+    width: 50%;
+}
+
+.social-icon {
+    display: flex;
+    gap: 32px;
+}
+
+/* membuat responsive ukuran layar utk ukuran 1200px - finishing project */
+@media only screen and (max-width: 1200px) {
+
+    /* membuat batas/gap baru utk ukuran lebar layar ini antara gap dari ketiga card - finishing project */
+    .service-detail {
+        gap: 24px;
+    }
+
+    .contact-detail {
+        gap: 24px;
+    }
+
+    /* perbaiki bagian form contact yg inputnya berlebih, atur form-group kumpulan dari input */
+    .form-group {
+        /* kita buat display nya menjadi flex */
+        display: flex;
+        /* kita buat flex nya menjadi kebawah ketika ukuran layar segini - finishing project */
+        flex-direction: column;
+    }
+}
+
+/* membuat website menjadi responsive */
+@media only screen and (max-width: 992px) {
+
+    /* kita akan rapikan bagian padding header dan footer */
+    #header,
+    #footer {
+        padding: 16px 32px;
+    }
+
+    /* kita akan rapikan bagian padding section */
+    section {
+        padding: 64px 32px;
+    }
+
+    /* kita akan rapikan bagian landing */
+    #landing {
+        /* untuk landing kita mau buat gambarnya di atas dan teksnya di bawah */
+        /* karena tadi #landing sudah memakai display flex, maka dibuat gini aja */
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* karena width sebelumnya kita buat 50%, jadi kita balikin dulu width nya menjadi 100%,
+    biar full kanan kiri */
+    #landing>div {
+        width: 100%;
+    }
+
+    /* kita akan rapikan bagian about */
+    #about {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* karena width sebelumnya kita buat 50%, jadi kita balikin dulu width nya menjadi 100%,
+    biar full kanan kiri */
+    #about>div {
+        width: 100%;
+    }
+
+    /* kita akan rapikan bagian service-detail/3 card tadi */
+    .service-detail {
+        /* kita atur dulu gapnya/jarak antar cardnya */
+        gap: 16px;
+    }
+
+    /* kita akan rapikan bagian contact */
+    .contact-detail {
+        /* karena tadi .contact-detail sudah memakai display flex, maka dibuat gini aja */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* nah tadi kan gap utk atur kolom, sekarang pakai row-gap utk atur jarak dari baris
+        antara form dengan our location*/
+        row-gap: 64px;
+    }
+
+    /* atur bagian form dan div utk iframe nya untuk ukuran layar ini, hingga full ke kanan kiri */
+    /* jgn lupa dibikin >, biar div yg di dalam form tidak terambil - finishing project */
+    .contact-detail form,
+    .contact-detail>div {
+        width: 100%;
+    }
+
+    /* bisa balikkan gini lagi - finishing project*/
+    .form-group {
+        display: grid;
+        /* ini kita buat 2 kolom */
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 32px;
+        /* memberi jarak dengan si headingnya/h1 td */
+        margin-top: 32px;
+        /* pakai grid area utk nempatin div input"nya */
+        grid-template-areas: "name subject"
+            "email phone"
+            "message message";
+    }
+}
